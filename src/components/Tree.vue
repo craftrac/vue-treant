@@ -19,19 +19,17 @@
 <script setup lang="ts">
     import Node from './Node.vue'
 
-    interface Props {
-        text: string,
-        area: string,
-        nodeList: Object,
-        data: Object,
-        build: Object
+    interface Node {
+        title: string
+        children: boolean
+        isExpanded: boolean
     }
+
     const props = defineProps<{
-        data: Array,
+        data: Array<Node>,
     }>()
 
-    const expandNode = (node) => {
-        console.debug('expanding...', node)
+    const expandNode = (node: Node) => {
         node.isExpanded = !node.isExpanded
     }
 
