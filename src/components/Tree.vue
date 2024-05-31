@@ -1,12 +1,12 @@
 <template>
   <ul id="treemain" class="ptree">
-    <template v-for="(node, idx) in props.data" :key="idx">
+    <template v-for="node in props.data" :key="node.title">
         <li class="container">
-            <Node :hasChildren="Object.hasOwn(node, 'children')" @expand="expandNode(node)"> 
+            <TreeNode :hasChildren="Object.hasOwn(node, 'children')" @expand="expandNode(node)"> 
                 <template #title>
                     {{ node.title }}
                 </template>
-            </Node>
+            </TreeNode>
             <Tree v-if="node.children"
               v-show="node.isExpanded"
               :data="node.children"
@@ -17,17 +17,11 @@
 </template>
 
 <script setup lang="ts">
-    import Node from './Node.vue'
+    import TreeNode from './Node.vue'
+    import { Node } from '../types'
 
-    interface Node {
-        title: string
-        children: boolean
-        isExpanded: boolean
-    }
 
-    const props = defineProps<{
-        data: Array<Node>,
-    }>()
+    const props = defineProps<{ data: Node[] }>()
 
     const expandNode = (node: Node) => {
         node.isExpanded = !node.isExpanded

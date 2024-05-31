@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import Tree from './components/Tree.vue'
-import { reactive } from 'vue'
+// import { reactive } from 'vue'
+import { Node } from './types'
 
-const data = reactive([{
+
+const data: Node[] = [{
     title: 'Root',
     children: [
         {
@@ -21,7 +23,7 @@ const data = reactive([{
         }
     ]},
     { title: 'Other' }
-])
+]
 </script>
 
 <template>

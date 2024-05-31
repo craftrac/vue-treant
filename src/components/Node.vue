@@ -1,10 +1,6 @@
 <script setup lang= "ts">
     import { ref } from 'vue'
-
-interface Node {
-    title: string
-    children: boolean
-}
+    import { Node } from '../types'
 
 const props = defineProps({
     children: Array<Node>,
