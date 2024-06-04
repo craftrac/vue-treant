@@ -1,6 +1,6 @@
 <template>
   <ul id="treemain" class="ptree">
-    <template v-for="node in props.data" :key="node.title">
+    <template v-for="node in treeNodes" :key="node.title">
         <li class="container">
             <TreeNode :hasChildren="Object.hasOwn(node, 'children')" @expand="expandNode(node)"> 
                 <template #title>
@@ -17,18 +17,21 @@
 </template>
 
 <script setup lang="ts">
+    import { reactive } from 'vue'
     import TreeNode from './Node.vue'
     import { Node } from '../types'
 
-
     const props = defineProps<{ data: Node[] }>()
-
+    const treeNodes = reactive(props.data)
     const expandNode = (node: Node) => {
         node.isExpanded = !node.isExpanded
     }
-
 </script>
 <style scoped>
+.container {
+    align-content: center;
+}
+
 .ptree li {
   list-style-type: none;
 }

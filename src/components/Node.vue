@@ -1,26 +1,31 @@
 <script setup lang= "ts">
     import { ref } from 'vue'
     import { Node } from '../types'
+    // import { Icon } from '@iconify/vue'
+    import * as Icon from './icons'
+    import IconPlus from './icons/IconPlus.vue'
+    import IconMinus from './icons/IconMinus.vue'
+    import IconMore from './icons/IconMore.vue'
 
-const props = defineProps({
-    children: Array<Node>,
-    hasChildren: Boolean,
-})
+    const props = defineProps({
+        children: Array<Node>,
+        hasChildren: Boolean,
+    })
 
-const emit = defineEmits(['expand'])
-const isExpanded = ref(false)
-const expand = () => {
-    isExpanded.value = !isExpanded.value
-    emit('expand')
-}
+    const emit = defineEmits(['expand'])
+    const isExpanded = ref(false)
+    const expand = () => {
+        isExpanded.value = !isExpanded.value
+        emit('expand')
+    }
 
 </script>
 
 <template>
     <div class="node">
-        <a @click.prevent="expand" v-if="props.hasChildren">
-            <v-icon v-show="!isExpanded" name="io-add" />
-            <v-icon v-show="isExpanded" name="co-minus" />
+        <a @click.prevent="expand" v-if="props.hasChildren" class="fold-control">
+            <IconPlus v-show="!isExpanded" />
+            <IconMinus v-show="isExpanded" />
         </a>
         <span class="title">
             <slot name="title"></slot>
@@ -30,8 +35,8 @@ const expand = () => {
             <input type="checkbox" value="1">
             <span class="slider round"></span>
         </label>
-        <a>
-            <v-icon name="ri-menu-unfold-line" />
+        <a class="context-menu">
+            <IconMore />
         </a>
         </div>
     </div>
@@ -51,6 +56,17 @@ const expand = () => {
 
 .title {
     color: #2d2d2d;
+}
+
+.fold-control {
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.context-menu {
+    padding-top: 5px;
+    margin-top: 5px;
+    cursor: pointer;
 }
 
 .switch {
