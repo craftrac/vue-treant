@@ -1,8 +1,6 @@
 <script setup lang= "ts">
     import { ref } from 'vue'
     import { Node } from '../types'
-    // import { Icon } from '@iconify/vue'
-    import * as Icon from './icons'
     import IconPlus from './icons/IconPlus.vue'
     import IconMinus from './icons/IconMinus.vue'
     import IconMore from './icons/IconMore.vue'
