@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Tree from './components/Tree.vue'
-// import { reactive } from 'vue'
 import { Node } from './types'
 
 
