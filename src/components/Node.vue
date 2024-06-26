@@ -28,18 +28,19 @@
         <span class="title">
             <slot name="title"></slot>
         </span>
-        <div>
         <label class="switch">
             <input type="checkbox" value="1">
             <span class="slider round"></span>
         </label>
         <a class="context-menu">
-            <IconMore />
+            <IconMore class="menuIcon"/>
         </a>
-        </div>
     </div>
 </template>
 <style scoped>
+.menuIcon {
+    margin-top: auto;
+}
 .node {
     background-color: white;
     justify-content: space-between;
@@ -48,12 +49,9 @@
     padding: 5px;
 }
 
-.node span {
-    margin-left: 5px;
-}
-
 .title {
     color: #2d2d2d;
+    margin: 3px auto auto auto;
 }
 
 .fold-control {
@@ -62,26 +60,24 @@
 }
 
 .context-menu {
-    padding-top: 5px;
-    margin-top: 5px;
+    /* padding-top: 5px; */
+    /* margin-top: 5px; */
+    line-height: 0;
     cursor: pointer;
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  height: 18px;
-  max-width: 50px;
-  /* width: 100%; */
-  /* margin: 0; */
+  height: 15px;
   padding-inline: 18px;
-  margin-right: 5px;
 }
 
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
  input:checked + .slider {
@@ -89,7 +85,7 @@
 }
 
  input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  /* box-shadow: 0 0 1px #2196f3; */
 }
 
  input:checked + .slider:before {
@@ -101,6 +97,7 @@
 .slider {
   position: absolute;
   cursor: pointer;
+  max-width: 34px;
   top: 0;
   left: 0;
   right: 0;
@@ -115,8 +112,9 @@
   content: "";
   height: 12px;
   width: 12px;
-  left: 4px;
-  bottom: 3px;
+  left: 1px;
+  bottom: 1px; 
+  top: 1px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
